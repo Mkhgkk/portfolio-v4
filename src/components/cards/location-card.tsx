@@ -31,6 +31,7 @@ export function LocationCard({ className }: { className?: string }) {
       markerColor: [1, 0.22, 0.22],
       glowColor: [0.7, 0.7, 0.7],
       markers: [{ location: [37.5665, 126.978], size: 0.06 }],
+      markerElevation: 0,
     } satisfies COBEOptions)
 
     // cobe v2 has NO internal animation loop — `onRender` was removed.
