@@ -40,4 +40,14 @@
   body {
     scrollbar-gutter: stable;
   }
+
+  ::selection {
+    background-color: theme(--color-emerald-200);
+    color: theme(--color-emerald-900);
+  }
+
+  .dark ::selection {
+    background-color: theme(--color-emerald-800);
+    color: theme(--color-emerald-100);
+  }
 }
