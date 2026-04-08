@@ -10,7 +10,7 @@ export function AvatarCard({ className }: { className?: string }) {
         src="/assets/avatar.png"
         alt={person.name}
         fill
-        className="object-cover"
+        className="object-cover grayscale hover:grayscale-0 transition-[filter] duration-500"
         sizes="(max-width: 640px) 50vw, 200px"
         priority
       />
