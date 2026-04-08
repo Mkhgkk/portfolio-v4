@@ -36,7 +36,7 @@ export function ProjectCard({ project, className }: { project: Project; classNam
             )}
           </div>
         </div>
-        <p className="text-xs leading-relaxed text-neutral-500 dark:text-neutral-400 line-clamp-3">
+        <p className="text-sm leading-relaxed text-neutral-500 dark:text-neutral-400 line-clamp-3">
           {project.description}
         </p>
       </div>

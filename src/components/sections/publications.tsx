@@ -18,7 +18,7 @@ export function PublicationsSection() {
       className="flex flex-col gap-6"
     >
       <div className="flex flex-col gap-1">
-        <h2 className="text-base font-semibold text-neutral-900 dark:text-neutral-100">Publications</h2>
+        <h2 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100">Publications</h2>
         <p className="text-sm text-neutral-500 dark:text-neutral-400">Academic research</p>
       </div>
 
@@ -56,7 +56,7 @@ export function PublicationsSection() {
                   )}
                 </h3>
               </div>
-              <div className="flex flex-wrap items-center gap-2 text-xs text-neutral-400 dark:text-neutral-500">
+              <div className="flex flex-wrap items-center gap-2 text-sm text-neutral-400 dark:text-neutral-500">
                 <span className="font-medium">{pub.journal}</span>
                 <span>·</span>
                 <span>{pub.date}</span>

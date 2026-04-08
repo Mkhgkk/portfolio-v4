@@ -16,7 +16,7 @@ export function EducationSection() {
       className="flex flex-col gap-6"
     >
       <div className="flex flex-col gap-1">
-        <h2 className="text-base font-semibold text-neutral-900 dark:text-neutral-100">Education</h2>
+        <h2 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100">Education</h2>
         <p className="text-sm text-neutral-500 dark:text-neutral-400">Academic background</p>
       </div>
 
@@ -42,7 +42,7 @@ export function EducationSection() {
                   <p className="text-sm font-semibold text-neutral-800 dark:text-neutral-200">
                     {entry.institution}
                   </p>
-                  <p className="text-xs text-neutral-500 dark:text-neutral-400">
+                  <p className="text-sm text-neutral-500 dark:text-neutral-400">
                     {entry.degree} · {entry.field}
                   </p>
                   <p className="text-xs text-neutral-400 dark:text-neutral-500">{entry.location}</p>

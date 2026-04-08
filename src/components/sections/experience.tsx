@@ -18,7 +18,7 @@ export function ExperienceSection() {
       className="flex flex-col gap-6"
     >
       <div className="flex flex-col gap-1">
-        <h2 className="text-base font-semibold text-neutral-900 dark:text-neutral-100">Experience</h2>
+        <h2 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100">Experience</h2>
         <p className="text-sm text-neutral-500 dark:text-neutral-400">Where I&apos;ve worked</p>
       </div>
 
@@ -62,16 +62,16 @@ export function ExperienceSection() {
                       </Link>
                     )}
                   </div>
-                  <p className="text-xs text-neutral-500 dark:text-neutral-400">{entry.role}</p>
+                  <p className="text-sm text-neutral-500 dark:text-neutral-400">{entry.role}</p>
                 </div>
-                <span className="text-xs text-neutral-400 dark:text-neutral-500 whitespace-nowrap shrink-0">
+                <span className="text-sm text-neutral-400 dark:text-neutral-500 whitespace-nowrap shrink-0">
                   {entry.period.start} – {entry.period.end === 'present' ? 'Present' : entry.period.end}
                 </span>
               </div>
 
               <ul className="flex flex-col gap-1">
                 {entry.highlights.map((h, j) => (
-                  <li key={j} className="text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed flex gap-2">
+                  <li key={j} className="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed flex gap-2">
                     <span className="text-neutral-300 dark:text-neutral-600 shrink-0 mt-0.5">–</span>
                     <span>{h}</span>
                   </li>

@@ -16,7 +16,7 @@ export function ProjectsSection() {
       className="flex flex-col gap-6"
     >
       <div className="flex flex-col gap-1">
-        <h2 className="text-base font-semibold text-neutral-900 dark:text-neutral-100">Projects</h2>
+        <h2 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100">Projects</h2>
         <p className="text-sm text-neutral-500 dark:text-neutral-400">Things I&apos;ve built</p>
       </div>
 

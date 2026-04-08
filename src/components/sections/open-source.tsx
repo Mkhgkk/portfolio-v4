@@ -25,7 +25,7 @@ export function OpenSourceSection() {
       className="flex flex-col gap-6"
     >
       <div className="flex flex-col gap-1">
-        <h2 className="text-base font-semibold text-neutral-900 dark:text-neutral-100">Open Source</h2>
+        <h2 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100">Open Source</h2>
         <p className="text-sm text-neutral-500 dark:text-neutral-400">Contributions to the community</p>
       </div>
 
@@ -63,7 +63,7 @@ export function OpenSourceSection() {
                     />
                   </div>
                 </div>
-                <p className="text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed">
+                <p className="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed">
                   {contrib.contribution}
                 </p>
               </Card>

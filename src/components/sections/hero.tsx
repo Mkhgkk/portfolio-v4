@@ -22,7 +22,7 @@ export function HeroSection() {
       >
         <motion.h1
           variants={fadeUpVariants}
-          className="text-2xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100"
+          className="text-3xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100"
         >
           Hi, I&apos;m {person.firstName} 👋
         </motion.h1>
