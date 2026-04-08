@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { useTheme } from "next-themes";
 import type { COBEOptions } from "cobe";
 import createGlobe from "cobe";
 import { Card } from "@/components/ui/card";
@@ -43,9 +44,12 @@ function projectSeoul(phi: number): { cx: number; cy: number; z: number } {
 export function LocationCard({ className }: { className?: string }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const glowRef = useRef<HTMLDivElement>(null);
+  const { resolvedTheme } = useTheme();
+  // resolvedTheme is undefined until next-themes hydrates — treat that as "not ready"
+  const isDark = resolvedTheme === undefined ? null : resolvedTheme !== "light";
 
   useEffect(() => {
-    if (!canvasRef.current) return;
+    if (!canvasRef.current || isDark === null) return;
 
     // Canvas is 200×200 CSS px (400×400 internal at 2× DPR).
     // Globe radius = 200 internal px = 100 CSS px.
@@ -57,13 +61,13 @@ export function LocationCard({ className }: { className?: string }) {
       height: 400, // 200 CSS px × 2
       phi: 2.2,
       theta: GLOBE_THETA,
-      dark: 1,
-      diffuse: 2.0,
+      dark: isDark ? 1 : 0,
+      diffuse: isDark ? 2.0 : 1.8,
       mapSamples: 16000,
-      mapBrightness: 12,
-      baseColor: [0.25, 0.25, 0.25],
+      mapBrightness: isDark ? 12 : 9,
+      baseColor: isDark ? [0.25, 0.25, 0.25] : [0.85, 0.85, 0.85],
       markerColor: [1, 0.22, 0.22],
-      glowColor: [0.7, 0.7, 0.7],
+      glowColor: isDark ? [0.7, 0.7, 0.7] : [0.15, 0.15, 0.15],
       // Small crisp dot — CSS overlay provides the glow
       markers: [{ location: [37.5665, 126.978], size: 0.04 }],
       markerElevation: 0,
@@ -115,12 +119,13 @@ export function LocationCard({ className }: { className?: string }) {
       cancelAnimationFrame(frameId);
       globe.destroy();
     };
-  }, []);
+  }, [isDark]);
 
   return (
     <Card
       className={cn(
-        "overflow-hidden !p-0 relative !bg-[#111] !border-neutral-800",
+        "overflow-hidden !p-0 relative",
+        isDark && "!bg-[#111] !border-neutral-800",
         className,
       )}
     >
@@ -131,13 +136,14 @@ export function LocationCard({ className }: { className?: string }) {
           height="11"
           viewBox="0 0 24 24"
           fill="none"
-          stroke="rgba(255,255,255,0.55)"
+          stroke="currentColor"
           strokeWidth="2"
+          className="text-neutral-500 dark:text-white/55"
         >
           <circle cx="12" cy="12" r="10" />
           <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
         </svg>
-        <span className="text-xs font-medium text-white/60">Seoul</span>
+        <span className="text-xs font-medium text-neutral-500 dark:text-white/60">Seoul</span>
       </div>
 
       {/* Canvas + glow share the same 200×200 coordinate space */}
