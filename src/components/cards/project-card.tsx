@@ -24,7 +24,7 @@ export function ProjectCard({ project, className }: { project: Project; classNam
           </h3>
           <div className="flex items-center gap-1 shrink-0">
             {project.highlight && (
-              <span className="text-xs font-medium text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/20 px-2 py-0.5 rounded-md">
+              <span className="text-xs font-medium text-neutral-500 dark:text-neutral-400 bg-neutral-100 dark:bg-neutral-800/60 border border-neutral-200/80 dark:border-neutral-700/50 px-2 py-0.5 rounded-md">
                 {project.highlight}
               </span>
             )}
