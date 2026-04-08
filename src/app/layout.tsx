@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { Providers } from "@/components/layout/providers";
 import { Nav } from "@/components/layout/nav";
@@ -39,6 +40,13 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable}`}
     >
+      <Script src="https://www.googletagmanager.com/gtag/js?id=G-RDWT77QMPF" strategy="afterInteractive" />
+      <Script id="gtag-init" strategy="afterInteractive">{`
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){window.dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-RDWT77QMPF');
+      `}</Script>
       <body className="bg-neutral-100 dark:bg-neutral-950 text-neutral-800 dark:text-neutral-200 antialiased min-h-screen">
         <Providers>
           <NoiseOverlay />
