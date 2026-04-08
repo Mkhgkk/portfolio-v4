@@ -1,5 +1,7 @@
 'use client'
 
+import Link from 'next/link'
+
 import { motion } from 'framer-motion'
 import { containerVariants, fadeUpVariants } from '@/lib/motion'
 import { LinkedinIcon } from '@/components/ui/icons'
@@ -30,7 +32,23 @@ export function HeroSection() {
           variants={fadeUpVariants}
           className="text-sm leading-relaxed text-neutral-500 dark:text-neutral-400 max-w-xl"
         >
-          {person.bio}
+          {(() => {
+            const [before, after] = person.bio.split('Contilab')
+            return (
+              <>
+                {before}
+                <Link
+                  href="http://contilab.co.kr/isafeguard/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-neutral-700 dark:text-neutral-300 underline underline-offset-2 decoration-neutral-400 dark:decoration-neutral-600 hover:decoration-neutral-700 dark:hover:decoration-neutral-300 transition-colors"
+                >
+                  Contilab
+                </Link>
+                {after}
+              </>
+            )
+          })()}
         </motion.p>
       </motion.div>
 

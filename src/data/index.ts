@@ -8,7 +8,7 @@ export const person = {
   name: 'Emmanuel Charles Kimito',
   firstName: 'Emmanuel',
   role: 'Software Engineer',
-  bio: "Software engineer and researcher at the intersection of computer vision, safety systems, and distributed computing. Currently building worker safety platforms at ConTi Lab in Seoul.",
+  bio: "Software engineer and researcher at the intersection of computer vision, safety systems, and distributed computing. Currently building worker safety platforms at Contilab in Seoul.",
   location: 'Seoul, Korea',
   timezone: 'Asia/Seoul',
   email: 'emmachalz745@outlook.com',
