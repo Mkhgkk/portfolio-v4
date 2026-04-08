@@ -18,11 +18,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Emmanuel Charles Kimito — Software Engineer",
+  title: "Emmachalz  — Software Engineer",
   description:
     "Software engineer and researcher specializing in computer vision, safety systems, and distributed computing. Currently at ConTi Lab in Seoul.",
   openGraph: {
-    title: "Emmanuel Charles Kimito — Software Engineer",
+    title: "Emmachalz — Software Engineer",
     description:
       "Software engineer and researcher specializing in computer vision, safety systems, and distributed computing.",
     type: "website",
@@ -40,7 +40,10 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable}`}
     >
-      <Script src="https://www.googletagmanager.com/gtag/js?id=G-RDWT77QMPF" strategy="afterInteractive" />
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-RDWT77QMPF"
+        strategy="afterInteractive"
+      />
       <Script id="gtag-init" strategy="afterInteractive">{`
         window.dataLayer = window.dataLayer || [];
         function gtag(){window.dataLayer.push(arguments);}
@@ -52,9 +55,7 @@ export default function RootLayout({
           <NoiseOverlay />
           <div className="mx-auto max-w-2xl px-4 pt-24 pb-16 flex flex-col min-h-screen">
             <Nav />
-            <main className="flex-1 flex flex-col gap-20 mt-8">
-              {children}
-            </main>
+            <main className="flex-1 flex flex-col gap-20 mt-8">{children}</main>
             <Footer />
           </div>
         </Providers>

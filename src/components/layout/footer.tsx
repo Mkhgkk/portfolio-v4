@@ -1,14 +1,14 @@
-import Link from 'next/link'
-import { Mail } from 'lucide-react'
-import { person } from '@/data'
-import { GithubIcon, LinkedinIcon } from '@/components/ui/icons'
+import Link from "next/link";
+import { Mail } from "lucide-react";
+import { person } from "@/data";
+import { GithubIcon, LinkedinIcon } from "@/components/ui/icons";
 
 export function Footer() {
   return (
     <footer className="mt-20 pt-8 border-t border-neutral-200 dark:border-neutral-800">
       <div className="flex items-center justify-between">
         <p className="text-sm text-neutral-400 dark:text-neutral-500">
-          © {new Date().getFullYear()} Emmanuel Charles Kimito
+          © {new Date().getFullYear()} Emmachalz
         </p>
         <div className="flex items-center gap-3">
           <Link
@@ -39,5 +39,5 @@ export function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }
