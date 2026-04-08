@@ -124,8 +124,7 @@ export function LocationCard({ className }: { className?: string }) {
   return (
     <Card
       className={cn(
-        "overflow-hidden !p-0 relative",
-        isDark && "!bg-[#111] !border-neutral-800",
+        "overflow-hidden !p-0 relative dark:!bg-[#111] dark:!border-neutral-800",
         className,
       )}
     >
@@ -143,7 +142,9 @@ export function LocationCard({ className }: { className?: string }) {
           <circle cx="12" cy="12" r="10" />
           <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
         </svg>
-        <span className="text-xs font-medium text-neutral-500 dark:text-white/60">Seoul</span>
+        <span className="text-xs font-medium text-neutral-500 dark:text-white/60">
+          Seoul
+        </span>
       </div>
 
       {/* Canvas + glow share the same 200×200 coordinate space */}

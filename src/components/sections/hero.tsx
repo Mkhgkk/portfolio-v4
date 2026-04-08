@@ -1,16 +1,16 @@
-'use client'
+"use client";
 
-import Link from 'next/link'
+import Link from "next/link";
 
-import { motion } from 'framer-motion'
-import { containerVariants, fadeUpVariants } from '@/lib/motion'
-import { LinkedinIcon } from '@/components/ui/icons'
-import { LocationCard } from '@/components/cards/location-card'
-import { RoleCard } from '@/components/cards/role-card'
-import { GithubCard } from '@/components/cards/github-card'
-import { SocialCard } from '@/components/cards/social-card'
-import { AvatarCard } from '@/components/cards/avatar-card'
-import { person } from '@/data'
+import { motion } from "framer-motion";
+import { containerVariants, fadeUpVariants } from "@/lib/motion";
+import { LinkedinIcon } from "@/components/ui/icons";
+import { LocationCard } from "@/components/cards/location-card";
+import { RoleCard } from "@/components/cards/role-card";
+import { GithubCard } from "@/components/cards/github-card";
+import { SocialCard } from "@/components/cards/social-card";
+import { AvatarCard } from "@/components/cards/avatar-card";
+import { person } from "@/data";
 
 export function HeroSection() {
   return (
@@ -33,7 +33,7 @@ export function HeroSection() {
           className="text-sm leading-relaxed text-neutral-500 dark:text-neutral-400 max-w-xl"
         >
           {(() => {
-            const [before, after] = person.bio.split('Contilab')
+            const [before, after] = person.bio.split("Contilab");
             return (
               <>
                 {before}
@@ -47,7 +47,7 @@ export function HeroSection() {
                 </Link>
                 {after}
               </>
-            )
+            );
           })()}
         </motion.p>
       </motion.div>
@@ -62,20 +62,23 @@ export function HeroSection() {
         animate="visible"
         className="grid grid-cols-2 sm:grid-cols-8 grid-rows-2 gap-1"
       >
-        <motion.div variants={fadeUpVariants} className="row-span-2 sm:col-span-3 sm:row-span-2">
-          <AvatarCard className="h-full min-h-[210px]" />
+        <motion.div
+          variants={fadeUpVariants}
+          className="row-span-2 sm:col-span-3 sm:row-span-2"
+        >
+          <AvatarCard className="h-full min-h-[250px]" />
         </motion.div>
 
         <motion.div variants={fadeUpVariants} className="sm:col-span-3">
-          <RoleCard className="h-full min-h-[100px]" />
+          <RoleCard className="h-full min-h-[120px]" />
         </motion.div>
 
         <motion.div variants={fadeUpVariants} className="sm:col-span-2">
-          <LocationCard className="h-full min-h-[100px]" />
+          <LocationCard className="h-full min-h-[120px]" />
         </motion.div>
 
         <motion.div variants={fadeUpVariants} className="sm:col-span-3">
-          <GithubCard className="h-full min-h-[100px]" />
+          <GithubCard className="h-full min-h-[120px]" />
         </motion.div>
 
         <motion.div variants={fadeUpVariants} className="sm:col-span-2">
@@ -84,10 +87,10 @@ export function HeroSection() {
             label="LinkedIn"
             sublabel="Connect"
             href={person.links.linkedin}
-            className="h-full min-h-[100px]"
+            className="h-full min-h-[120px]"
           />
         </motion.div>
       </motion.div>
     </section>
-  )
+  );
 }
