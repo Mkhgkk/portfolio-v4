@@ -8,7 +8,6 @@ import { cn } from '@/lib/cn'
 
 export function LocationCard({ className }: { className?: string }) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  const phiRef = useRef(2.2) // center on East Asia (Seoul ~127°E)
 
   useEffect(() => {
     if (!canvasRef.current) return
@@ -21,7 +20,7 @@ export function LocationCard({ className }: { className?: string }) {
       devicePixelRatio: 2,
       width: 400,   // 200 CSS px × 2
       height: 400,  // 200 CSS px × 2
-      phi: phiRef.current,
+      phi: 2.2,
       theta: 0.35,
       dark: 1,
       diffuse: 2.0,
@@ -34,13 +33,38 @@ export function LocationCard({ className }: { className?: string }) {
       markerElevation: 0,
     } satisfies COBEOptions)
 
-    // cobe v2 has NO internal animation loop — `onRender` was removed.
-    // We drive animation ourselves so the globe rotates AND so we get
-    // re-renders after the async map texture has loaded (continents appear).
+    const CENTRE    = 2.2
+    const AMPLITUDE = 1.5   // rad — marker reaches near globe limb (~86°)
+    const SWING_MS  = 7200  // ms to cross from one edge to the other
+    const PAUSE_MS  = 600   // ms to dwell at each edge before returning
+    const HALF_MS   = SWING_MS + PAUSE_MS   // one full half-cycle
+    const FULL_MS   = HALF_MS * 2
+
+    // Quadratic ease-in-out: 0→1
+    const eio = (t: number) => t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t
+
     let frameId: number
+    const startTime = Date.now()
+
     const animate = () => {
-      phiRef.current += 0.004
-      globe.update({ phi: phiRef.current })
+      const elapsed = (Date.now() - startTime) % FULL_MS
+
+      let normalized: number          // -1 = left edge, +1 = right edge
+      if (elapsed < SWING_MS) {
+        // swing  left → right
+        normalized = eio(elapsed / SWING_MS) * 2 - 1
+      } else if (elapsed < HALF_MS) {
+        // pause at right edge
+        normalized = 1
+      } else if (elapsed < HALF_MS + SWING_MS) {
+        // swing  right → left
+        normalized = 1 - eio((elapsed - HALF_MS) / SWING_MS) * 2
+      } else {
+        // pause at left edge
+        normalized = -1
+      }
+
+      globe.update({ phi: CENTRE + AMPLITUDE * normalized })
       frameId = requestAnimationFrame(animate)
     }
     frameId = requestAnimationFrame(animate)
