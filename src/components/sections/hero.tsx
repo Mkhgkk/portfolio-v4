@@ -1,14 +1,13 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Mail } from 'lucide-react'
 import { containerVariants, fadeUpVariants } from '@/lib/motion'
 import { LinkedinIcon } from '@/components/ui/icons'
 import { LocationCard } from '@/components/cards/location-card'
 import { RoleCard } from '@/components/cards/role-card'
 import { GithubCard } from '@/components/cards/github-card'
 import { SocialCard } from '@/components/cards/social-card'
-import { TimeCard } from '@/components/cards/time-card'
+import { AvatarCard } from '@/components/cards/avatar-card'
 import { person } from '@/data'
 
 export function HeroSection() {
@@ -35,19 +34,26 @@ export function HeroSection() {
         </motion.p>
       </motion.div>
 
-      {/* Bento Grid */}
+      {/* Bento Grid — 2 rows × 8 cols
+          Row 1: Avatar(3) | Role(3) | Location(2)
+          Row 2: Avatar(3) | GitHub(3) | LinkedIn(2)
+      */}
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="grid grid-cols-2 sm:grid-cols-8 gap-1"
+        className="grid grid-cols-2 sm:grid-cols-8 grid-rows-2 gap-1"
       >
-        <motion.div variants={fadeUpVariants} className="sm:col-span-2">
-          <LocationCard className="h-full min-h-[100px]" />
+        <motion.div variants={fadeUpVariants} className="row-span-2 sm:col-span-3 sm:row-span-2">
+          <AvatarCard className="h-full min-h-[210px]" />
         </motion.div>
 
         <motion.div variants={fadeUpVariants} className="sm:col-span-3">
           <RoleCard className="h-full min-h-[100px]" />
+        </motion.div>
+
+        <motion.div variants={fadeUpVariants} className="sm:col-span-2">
+          <LocationCard className="h-full min-h-[100px]" />
         </motion.div>
 
         <motion.div variants={fadeUpVariants} className="sm:col-span-3">
@@ -62,20 +68,6 @@ export function HeroSection() {
             href={person.links.linkedin}
             className="h-full min-h-[100px]"
           />
-        </motion.div>
-
-        <motion.div variants={fadeUpVariants} className="sm:col-span-3">
-          <SocialCard
-            icon={Mail}
-            label="Email"
-            sublabel={person.email}
-            href={`mailto:${person.email}`}
-            className="h-full min-h-[100px]"
-          />
-        </motion.div>
-
-        <motion.div variants={fadeUpVariants} className="sm:col-span-3">
-          <TimeCard className="h-full min-h-[100px]" />
         </motion.div>
       </motion.div>
     </section>
