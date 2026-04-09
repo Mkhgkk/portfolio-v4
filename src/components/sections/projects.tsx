@@ -1,11 +1,16 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { containerVariants, fadeUpVariants, sectionVariants } from '@/lib/motion'
 import { ProjectCard } from '@/components/cards/project-card'
+import { ProjectDetailOverlay } from '@/components/cards/project-detail-overlay'
 import { projects } from '@/data'
+import type { Project } from '@/data'
 
 export function ProjectsSection() {
+  const [selected, setSelected] = useState<Project | null>(null)
+
   return (
     <motion.section
       id="projects"
@@ -27,12 +32,30 @@ export function ProjectsSection() {
         viewport={{ once: true }}
         className="grid grid-cols-1 sm:grid-cols-2 gap-1"
       >
-        {projects.map((project) => (
-          <motion.div key={project.id} variants={fadeUpVariants}>
-            <ProjectCard project={project} className="min-h-[160px]" />
-          </motion.div>
-        ))}
+        {projects.map((project) => {
+          const hasLink = project.liveUrl ?? project.githubUrl
+          return (
+            <motion.div key={project.id} variants={fadeUpVariants}>
+              <ProjectCard
+                project={project}
+                className="min-h-[160px]"
+                onSelect={!hasLink ? () => setSelected(project) : undefined}
+                isSelected={selected?.id === project.id}
+              />
+            </motion.div>
+          )
+        })}
       </motion.div>
+
+      <AnimatePresence>
+        {selected && (
+          <ProjectDetailOverlay
+            key={selected.id}
+            project={selected}
+            onClose={() => setSelected(null)}
+          />
+        )}
+      </AnimatePresence>
     </motion.section>
   )
 }

@@ -11,7 +11,7 @@ export type ExperienceEntry = {
 export const experience: ExperienceEntry[] = [
   {
     company: "ConTi Lab",
-    role: "Research Engineer",
+    role: "Software Engineer",
     period: { start: "Sep 2025", end: "present" },
     location: "Seoul, Korea",
     highlights: [
