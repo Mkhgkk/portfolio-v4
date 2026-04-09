@@ -26,7 +26,7 @@ export function HeroSection() {
           variants={fadeUpVariants}
           className="text-3xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100"
         >
-          Hi, I&apos;m {person.firstName} 👋
+          Hi, I&apos;m {person.firstName} 👋🏾
         </motion.h1>
         <motion.p
           variants={fadeUpVariants}

@@ -53,9 +53,9 @@ export default function RootLayout({
       <body className="bg-neutral-100 dark:bg-neutral-950 text-neutral-800 dark:text-neutral-200 antialiased min-h-screen">
         <Providers>
           <NoiseOverlay />
-          <div className="mx-auto max-w-2xl px-4 pt-24 pb-16 flex flex-col min-h-screen">
+          <div className="mx-auto max-w-2xl px-4 pt-20 sm:pt-24 pb-12 sm:pb-16 flex flex-col min-h-screen">
             <Nav />
-            <main className="flex-1 flex flex-col gap-20 mt-8">{children}</main>
+            <main className="flex-1 flex flex-col gap-14 sm:gap-20 mt-6 sm:mt-8">{children}</main>
             <Footer />
           </div>
         </Providers>
