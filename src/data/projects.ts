@@ -7,6 +7,8 @@ export type Project = {
   liveUrl?: string;
   featured: boolean;
   highlight?: string;
+  /** Path relative to /public, e.g. "/assets/projects/isafe-guard.png" */
+  image?: string;
 };
 
 export const projects: Project[] = [
@@ -29,6 +31,7 @@ export const projects: Project[] = [
       "WebRTC",
     ],
     featured: true,
+    // image: "/assets/projects/isafe-guard.png",
   },
   {
     id: "isafe-nearmiss",
